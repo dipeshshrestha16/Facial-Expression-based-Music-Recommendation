@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Music Recommendation</title>
+    <style>
+        body {
+            background: #020617;
+            color: white;
+            font-family: Arial;
+            text-align: center;
+        }
+        .song {
+            background: #1e293b;
+            padding: 15px;
+            margin: 10px auto;
+            width: 60%;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>😊 Detected Emotion: {{ emotion }}</h1>
+
+    <h2>🎵 Recommended Songs</h2>
+
+    {% for song in songs %}
+        <div class="song">
+            <p><b>{{ song.track_name }}</b></p>
+            <p>{{ song.artist_name }} | {{ song.genre }}</p>
+        </div>
+    {% endfor %}
+
+    <a href="/">⬅ Back</a>
+
+</body>
+</html>

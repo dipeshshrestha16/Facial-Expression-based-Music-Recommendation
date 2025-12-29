@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Emotion Music Recommender</title>
+    <style>
+        body {
+            background: #0f172a;
+            color: white;
+            text-align: center;
+            font-family: Arial;
+        }
+        img {
+            border-radius: 10px;
+            border: 3px solid #38bdf8;
+        }
+        button {
+            margin-top: 20px;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            background: #38bdf8;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🎭 Emotion-Based Music Recommendation</h1>
+
+    <!-- Live Camera Feed -->
+    <img src="{{ url_for('video_feed') }}" width="480">
+
+    <form action="/result" method="GET">
+        <button type="submit">Get Music Recommendation 🎵</button>
+    </form>
+
+</body>
+</html>
