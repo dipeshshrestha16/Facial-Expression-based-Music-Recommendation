@@ -20,16 +20,20 @@
 </head>
 <body>
 
-    <h1>😊 Detected Emotion: {{ emotion }}</h1>
+    <h1>Detected Emotion: {{ emotion }}</h1>
 
     <h2>🎵 Recommended Songs</h2>
 
-    {% for song in songs %}
-        <div class="song">
-            <p><b>{{ song.track_name }}</b></p>
-            <p>{{ song.artist_name }} | {{ song.genre }}</p>
-        </div>
-    {% endfor %}
+    {% if songs %}
+        {% for song in songs %}
+            <div class="song">
+                <p><b>{{ song.track_name }}</b></p>
+                <p>{{ song.artist_name }} | {{ song.genre }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No songs found for this emotion. Try again!</p>
+    {% endif %}
 
     <a href="/">⬅ Back</a>
 

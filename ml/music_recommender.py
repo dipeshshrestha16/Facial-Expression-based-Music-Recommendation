@@ -13,11 +13,16 @@ EMOTION_MAP = {
 }
 
 def recommend_music(emotion, n=5):
-    rules = EMOTION_MAP[emotion]
+    rules = EMOTION_MAP.get(emotion, EMOTION_MAP["neutral"])
 
     songs = df[
         (df['valence'].between(*rules['valence'])) &
         (df['energy'].between(*rules['energy']))
     ]
 
-    return songs.sample(n)[['track_name', 'artist_name']]
+    if songs.empty:
+        return []
+
+    sample_size = min(n, len(songs))
+    result = songs.sample(sample_size)[['track_name', 'artist_name', 'genre']]
+    return result.to_dict(orient='records')

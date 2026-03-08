@@ -16,7 +16,6 @@ def gen_frames():
         if not success:
             break
 
-        # Detect emotion
         emotion = predict_emotion_from_face(frame)
         last_emotion = emotion
 
@@ -43,7 +42,9 @@ def video_feed():
 
 @app.route('/result')
 def result():
+    print(f"[DEBUG] Detected emotion: {last_emotion}")
     songs = recommend_music(last_emotion)
+    print(f"[DEBUG] Songs returned: {songs}")
     return render_template(
         'results.html',
         emotion=last_emotion,
